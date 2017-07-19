@@ -1,11 +1,10 @@
-##############################################################################################
+#############################################################################################
 ### BayesMix: A R/JAGS Bayesian mixed model for analyzing quantitative genetic data 
-##############################################################################################
+#############################################################################################
 
 #### Preamble:
 
 This code is still in development. Please contact Xavier Bouteiller at xavier.bouteiller(at)u-bordeaux(dot)fr with bug reports or questions. 
-
 
 #### Readme:
 
@@ -16,7 +15,6 @@ This repository contains:
 - Code to execute the model in R (to be added soon)
 - Plotting functions of the results (to be added soon)
 - A sample data set (to be added soon)
-
 
 #### Description of the original experimental design:
 
@@ -29,7 +27,6 @@ Thus temperature conditions and ranges were considered as fixed effect whereas p
 To control for maternal effect, mean seed weight calcuted at the family level was used as covariate in the model.
 Finally, temperature x population interaction was implemented in the model.
 
-
 #### Model:
 
 >Y,ijklm = b0 + b1,i + b2,j + B3,jk + B4,jkl + B5,ijk + c(x,ijkl-xmean) + e,ijklm
@@ -41,7 +38,6 @@ Finally, temperature x population interaction was implemented in the model.
 - covariate parameter: (c)x,ijkl the mean family seed weight as a covariate for maternal effect (c)
 - xmean global mean seed weight (substracted to  mean family seed weight in order to center the covariate)
 
-
 #### QST estimation:
 
 In order to compute QST, variance within populations (sigmaW^2) should be separated from variance between populations (sigmaB^2). Then for a phenotypic trait, QST can be calculated as follows:
@@ -52,7 +48,6 @@ As we used families of half-sibs,variance within populations is 4 times the vari
 >QST = sigmaB^2 / (sigmaB^2 + 8 X sigmaTREE^2)
 
 QST can be calculated among the three environments or within each environment depending on the question. Thus, code for implementing the mixed model within or between chambers is provided.
-
 
 #### References:
 
