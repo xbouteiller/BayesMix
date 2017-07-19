@@ -40,14 +40,14 @@ Finally, temperature x population interaction was implemented in the model.
 #### QST estimation:
 
 In order to compute QST, variance within populations (sigmaW^2) should be separated from variance between populations (sigmaB^2). Then for a phenotypic trait, QST can be calculated as follows:
-
+'''
 >QST = sigmaB^2 / (sigmaB^2 + 2 sigmaW^2)
-
+'''
 As we used families of half-sibs,variance within populations is 4 times the variance at the tree (family) level (sigmaTREE^2)
-
+'''
 >sigmaW^2 = 4 X sigmaTREE^2
 >QST = sigmaB^2 / (sigmaB^2 + 8 X sigmaTREE^2)
-
+'''
 QST can be calculated among the three environments or within each environment depending on the question. Thus, code for implementing the mixed model within or between chambers is provided.
 
 #### References:
