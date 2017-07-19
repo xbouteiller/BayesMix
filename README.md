@@ -1,4 +1,3 @@
-#############################################################################################
 ### BayesMix: A R/JAGS Bayesian mixed model for analyzing quantitative genetic data 
 #############################################################################################
 
@@ -11,7 +10,7 @@ This code is still in development. Please contact Xavier Bouteiller at xavier.bo
 Here I provide a R/JAGS code for analysing quantitative genetic data using a mixed model that allows to compute Qst quantitative trait differentiation index.
 
 This repository contains:
-- Code of the model **_model.txt_**
+- Code of the model: **_model.txt_**
 - Code to execute the model in R (to be added soon)
 - Plotting functions of the results (to be added soon)
 - A sample data set (to be added soon)
@@ -43,7 +42,9 @@ Finally, temperature x population interaction was implemented in the model.
 In order to compute QST, variance within populations (sigmaW^2) should be separated from variance between populations (sigmaB^2). Then for a phenotypic trait, QST can be calculated as follows:
 
 >QST = sigmaB^2 / (sigmaB^2 + 2 sigmaW^2)
+
 As we used families of half-sibs,variance within populations is 4 times the variance at the tree (family) level (sigmaTREE^2)
+
 >sigmaW^2 = 4 X sigmaTREE^2
 >QST = sigmaB^2 / (sigmaB^2 + 8 X sigmaTREE^2)
 
