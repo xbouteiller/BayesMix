@@ -1,4 +1,4 @@
-### BayesMix: A R/JAGS Bayesian mixed model for analyzing quantitative genetic data 
+### BayesMix: A R/JAGS Bayesian mixed model for analyzing quantitative genetics data 
 #############################################################################################
 
 #### Preamble:
@@ -7,7 +7,7 @@ This code is still in development. Please contact Xavier Bouteiller at xavier.bo
 
 #### Readme:
 
-Here I provide a R/JAGS code for analysing quantitative genetic data using a mixed model that allows to compute Qst quantitative trait differentiation index.
+Here I provide a R/JAGS code for analysing quantitative genetics data using a mixed model that allows to compute Qst quantitative trait differentiation index.
 
 This repository contains:
 - Code of the model: **_mixed_model.txt_**
