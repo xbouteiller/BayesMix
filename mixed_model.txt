@@ -1,0 +1,144 @@
+#-------------------------------------------------------------------------------------------------------------------------------------
+##BETWEEN TEMPERATURES (CHAMBERS) MODEL 
+##Add comment symbol “#” if you want to use the within chamber model in order to estimate QST
+
+model{
+##likelihood
+for(i in 1:NINDIV){ #NINDIV = Number of individuals
+mod[i]<- a0 + a1[Temp[i]] + a2[Range[i]] + A3[Pop[i]] + A4[Tree[i]] + A5[Temp[i],Pop[i]] + c*(Seedweight[i]- SeedweightMean)
+Trait[i]~dnorm(mod[i], 1/ySigma^2)
+}
+
+#Priors
+ySigma~dunif(residSD/100, ySD*10) # see Kruschke 2015
+a0~dnorm(yMean, 1/(ySD*5)^2)
+c~dnorm(0,1/(2*ySD/xMetSD)^2 ) #covariate parameter
+
+## Fixed effects
+for(t in 1:NTEMP) #NTEMP : number of climatic chambers
+{
+a1[t]~dnorm(0.0, 0.000001)
+}
+
+for(o in 1:NRANGE) #NRANGE : Number of ranges
+{
+a2[o]~dnorm(0.0, 0.000001)
+}
+
+## Random effects
+for(p in 1:NPOP) # NPOP : Numbers of populations
+{
+A3[p]~dnorm(0, tauP)
+}
+#Hyperpriors
+tauP~dgamma(0.0001,0.0001)
+
+for(d in 1:NTREE) #NTREE : number of trees
+{
+A4[d]~dnorm(0, tauF)
+}
+#Hyperpriors
+tauF~dgamma(0.0001,0.0001)
+
+## temperature x pop interaction
+for(t in 1:NTEMP) {for(p in 1:NPOP){ 
+A5[t,p]~dnorm( 0.0 ,tauINT ) ##!!!
+
+}}
+tauINT~dgamma(0.0001,0.0001)
+
+##Estimation of random effect variances
+varP<-1/tauP
+varF<-1/tauF
+varINT<-1/tauINT
+
+##sum to zero constraint (see Kruschke 2015)
+for(t in 1:NTEMP){ for(o in 1:NRANGE) { for(p in 1:NPOP) { for(d in 1:NTREE) {
+
+m[t,o,p,d]<-a1[t] + a2[o] + A3[p] + A4[d] + A5[t,p]
+
+}}}}
+
+b0<-a0 + mean(m[1:NTEMP,1:NRANGE,1:NPOP,1:NTREE]) + c*(-SeedweightMean) 
+
+for(t in 1:NTEMP) {b1[t]<-mean(m[t,1:NRANGE,1:NPOP,1:NTREE])-mean(m[1:NTEMP,1:NRANGE,1:NPOP,1:NTREE])}
+for(o in 1:NRANGE) {b2[o]<-mean(m[1:NTEMP,o,1:NPOP,1:NTREE])-mean(m[1:NTEMP,1:NRANGE,1:NPOP,1:NTREE])}
+for(p in 1:NPOP) {B3[p]<-mean(m[1:NTEMP,1:NRANGE,p,1:NTREE])-mean(m[1:NTEMP,1:NRANGE,1:NPOP,1:NTREE])}
+for(d in 1:NTREE) {B4[d]<-mean(m[1:NTEMP,1:NRANGE,1:NPOP,d])-mean(m[1:NTEMP,1:NRANGE,1:NPOP,1:NTREE])}
+
+for (t in 1:NTEMP) { 
+for (p in 1:NPOP ) {
+
+B5[t,d] <- a0 + a1[t] + mean(a2[1:NRANGE]) + A3[p] + mean(A4[1:NTREE]) + A5[t,p] - ( b0 + mean(b2[1:NRANGE]) + B3[p] + b1[t] + mean(B4[1:NTREE]))
+
+}
+}
+
+
+
+## QST estimation among the three chambers
+
+##Estimation of random effect variances
+
+QST <- varP /(varP+ 8*varF)
+
+#-------------------------------------------------------------------------------------------------------------------------------------
+##WITHIN TEMPERATURES (CHAMBERS) MODEL IN ORDER TO ESTIMATE QST
+##Remove comment symbols ”# “ to use and comment the model above
+
+#model{
+
+# #likelihood
+# for(i in 1:NINDIV) #NINDIV = Number of individuals
+# {
+# mod[i]<- a0 + a2[Range[i]] +A3[Pop[i]] + A4[Tree[i]] + #c*(Seedweight[i]- SeedweightMean) # #Trait[i]~dnorm(mod[i], 1/ySigma^2)
+# }
+
+##Priors
+#ySigma~dunif(residSD/100, ySD*10)#residSD in place of ySD
+# a0~dnorm(yMean, 1/(ySD*5)^2)
+# c~dnorm( 0 , 1/(2*ySD/xMetSD)^2 ) #covariate parameter
+
+## Fixed effect
+# for(o in 1:NRANGE) #NRANGE : Number of ranges
+# {
+# #a2[o]~dnorm(0.0, 0.000001)
+# }
+
+## Random effects
+#for(p in 1:NPOP) # NPOP : Numbers of populations
+#{
+#A3[p]~dnorm(0, tauP)
+#}
+##Hyperpriors
+#tauP~dgamma(0.001,0.001)
+
+#for(d in 1:NTREE) #NTREE : number of trees
+#{
+#A4[d]~dnorm(0, tauF)
+#}
+##Hyperpriors
+#tauF~dgamma(0.001,0.001)
+
+##sum to zero constraint (see Kruschke 2015)
+#for(o in 1:NRANGE) { for(p in 1:NPOP) { for(d in 1:NTREE) {
+#m[o,p,d]<- a2[o] + A3[p] + A4[d]
+#}}}
+
+#b0<- a0 + mean(m[1:NRANGE,1:NPOP,1:NTREE]) + c*(-SeedweightMean)
+
+#for(o in 1:NRANGE) {b2[o]<-mean(m[o,1:NPOP,1:NTREE])-mean(m[1:NRANGE,1:NPOP,1:NTREE])}
+#for(p in 1:NPOP) {B3[p]<-mean(m[1:NRANGE,p,1:NTREE])-mean(m[1:NRANGE,1:NPOP,1:NTREE])}
+#for(d in 1:NTREE) {B4[d]<-mean(m[1:NRANGE,1:NPOP,d])-mean(m[1:NRANGE,1:NPOP,1:NTREE])}
+
+
+## QST estimation
+
+# #Estimation of random effect variances
+#varP<-1/tauP # Population variance
+#varF<-1/tauF # Tree variance (family)
+
+# QST <- varP /(varP+ 8*varF)
+
+}
+
