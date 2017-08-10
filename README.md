@@ -3,7 +3,7 @@
 
 #### Preamble:
 
-This code is still in development. Please contact Xavier Bouteiller at xavier.bouteiller(at)u-bordeaux(dot)fr with bug reports or questions. 
+This code was successfully tested on my dataset. Please contact Xavier Bouteiller at xavier.bouteiller(at)u-bordeaux(dot)fr with bug reports or questions. 
 
 #### Readme:
 
@@ -11,8 +11,8 @@ Here I provide a R/JAGS code for analysing quantitative genetics data using a mi
 
 This repository contains:
 - Code of the model: **_mixed_model.txt_**
-- Code to execute the model in R (to be added soon)
-- Plotting functions of the results (to be added soon)
+- Code to execute the model in R (to be added)
+- Plotting functions of the results (to be added)
 - A sample data set (to be added soon)
 
 #### Description of the original experimental design:
