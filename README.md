@@ -29,6 +29,7 @@ Finally, temperature x population interaction was implemented in the model.
 #### Model:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=Y_{ijklm}&space;=&space;b0&space;&plus;&space;b1_{i}&space;&plus;&space;b2_{j}&space;&plus;&space;B3_{jk}&space;&plus;&space;B4_{jkl}&space;&plus;&space;B5_{ijk}&space;&plus;&space;c(x_{ijkl}-\bar{x})&space;&plus;&space;e_{ijklm}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Y_{ijklm}&space;=&space;b0&space;&plus;&space;b1_{i}&space;&plus;&space;b2_{j}&space;&plus;&space;B3_{jk}&space;&plus;&space;B4_{jkl}&space;&plus;&space;B5_{ijk}&space;&plus;&space;c(x_{ijkl}-\bar{x})&space;&plus;&space;e_{ijklm}" title="Y_{ijklm} = b0 + b1_{i} + b2_{j} + B3_{jk} + B4_{jkl} + B5_{ijk} + c(x_{ijkl}-\bar{x}) + e_{ijklm}" /></a>
+
 <a href="https://www.codecogs.com/eqnedit.php?latex=e\sim&space;\mathcal{N}(0,&space;\sigma^2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?e\sim&space;\mathcal{N}(0,&space;\sigma^2)" title="e\sim \mathcal{N}(0, \sigma^2)" /></a>
 
 - Y: Individual phenotypic value for a surveyed trait
