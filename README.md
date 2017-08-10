@@ -40,15 +40,12 @@ Finally, temperature x population interaction was implemented in the model.
 
 #### QST estimation:
 
-In order to compute QST, variance within populations (sigmaW^2) should be separated from variance between populations (sigmaB^2). Then for a phenotypic trait, QST can be calculated as follows:
-```
-QST = sigmaB^2 / (sigmaB^2 + 2 sigmaW^2)
-```
+In order to compute QST, variance within populations (<a href="https://www.codecogs.com/eqnedit.php?latex=\sigma_{W}^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma_{W}^2" title="\sigma_{W}^2" /></a>) should be separated from variance between populations (<a href="https://www.codecogs.com/eqnedit.php?latex=\sigma_{B}^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma_{B}^2" title="\sigma_{B}^2" /></a>). Then for a phenotypic trait, QST can be calculated as follows:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=QST&space;=&space;\frac{\sigma_{B}^2&space;}{(\sigma_{B}^2&space;&plus;&space;2&space;\sigma_{W}^2)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?QST&space;=&space;\frac{\sigma_{B}^2&space;}{(\sigma_{B}^2&space;&plus;&space;2&space;\sigma_{W}^2)}" title="QST = \frac{\sigma_{B}^2 }{(\sigma_{B}^2 + 2 \sigma_{W}^2)}" /></a>
+
 As we used families of half-sibs,variance within populations is 4 times the variance at the tree (family) level (sigmaTREE^2)
-```
-sigmaW^2 = 4 X sigmaTREE^2
-QST = sigmaB^2 / (sigmaB^2 + 8 X sigmaTREE^2)
-```
+<a href="https://www.codecogs.com/eqnedit.php?latex=QST&space;=&space;\frac{\sigma_{B}^2&space;}{(\sigma_{B}^2&space;&plus;&space;2&space;\sigma_{W}^2)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?QST&space;=&space;\frac{\sigma_{B}^2&space;}{(\sigma_{B}^2&space;&plus;&space;2&space;\sigma_{W}^2)}" title="QST = \frac{\sigma_{B}^2 }{(\sigma_{B}^2 + 2 \sigma_{W}^2)}" /></a>
 QST can be calculated among the three environments or within each environment depending on the question. Thus, code for implementing the mixed model within or between chambers is provided.
 
 #### References:
