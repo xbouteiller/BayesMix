@@ -44,7 +44,8 @@ In order to compute QST, variance within populations (<a href="https://www.codec
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=QST&space;=&space;\frac{\sigma_{B}^2&space;}{(\sigma_{B}^2&space;&plus;&space;2&space;\sigma_{W}^2)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?QST&space;=&space;\frac{\sigma_{B}^2&space;}{(\sigma_{B}^2&space;&plus;&space;2&space;\sigma_{W}^2)}" title="QST = \frac{\sigma_{B}^2 }{(\sigma_{B}^2 + 2 \sigma_{W}^2)}" /></a>
 
-As we used families of half-sibs,variance within populations is 4 times the variance at the tree (family) level (<a href="https://www.codecogs.com/eqnedit.php?latex=\sigma_{tree}^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma_{tree}^2" title="\sigma_{tree}^2" /></a>)
+As we used families of half-sibs,variance within populations is 4 times the variance at the tree (i.e. family) level (<a href="https://www.codecogs.com/eqnedit.php?latex=\sigma_{tree}^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma_{tree}^2" title="\sigma_{tree}^2" /></a>)
+
 <a href="https://www.codecogs.com/eqnedit.php?latex=\sigma_{W}^2&space;=&space;4&space;\sigma_{tree}^2&space;\newline&space;\newline&space;QST&space;=&space;\frac{\sigma_{B}^2&space;}{(\sigma_{B}^2&space;&plus;&space;8&space;\sigma_{tree}^2)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma_{W}^2&space;=&space;4&space;\sigma_{tree}^2&space;\newline&space;\newline&space;QST&space;=&space;\frac{\sigma_{B}^2&space;}{(\sigma_{B}^2&space;&plus;&space;8&space;\sigma_{tree}^2)}" title="\sigma_{W}^2 = 4 \sigma_{tree}^2 \newline \newline QST = \frac{\sigma_{B}^2 }{(\sigma_{B}^2 + 8 \sigma_{tree}^2)}" /></a>
 
 QST can be calculated among the three environments or within each environment depending on the question. Thus, code for implementing the mixed model within or between chambers is provided.
