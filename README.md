@@ -28,14 +28,14 @@ Finally, temperature x population interaction was implemented in the model.
 
 #### Model:
 
->Y,ijklm = b0 + b1,i + b2,j + B3,jk + B4,jkl + B5,ijk + c(x,ijkl-xmean) + e,ijklm
->e~N(o, sigma^2)
+<a href="https://www.codecogs.com/eqnedit.php?latex=Y_{ijklm}&space;=&space;b0&space;&plus;&space;b1_{i}&space;&plus;&space;b2_{j}&space;&plus;&space;B3_{jk}&space;&plus;&space;B4_{jkl}&space;&plus;&space;B5_{ijk}&space;&plus;&space;c(x_{ijkl}-\bar{x})&space;&plus;&space;e_{ijklm}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Y_{ijklm}&space;=&space;b0&space;&plus;&space;b1_{i}&space;&plus;&space;b2_{j}&space;&plus;&space;B3_{jk}&space;&plus;&space;B4_{jkl}&space;&plus;&space;B5_{ijk}&space;&plus;&space;c(x_{ijkl}-\bar{x})&space;&plus;&space;e_{ijklm}" title="Y_{ijklm} = b0 + b1_{i} + b2_{j} + B3_{jk} + B4_{jkl} + B5_{ijk} + c(x_{ijkl}-\bar{x}) + e_{ijklm}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=e\sim&space;\mathcal{N}(0,&space;\sigma^2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?e\sim&space;\mathcal{N}(0,&space;\sigma^2)" title="e\sim \mathcal{N}(0, \sigma^2)" /></a>
 
 - Y: Individual phenotypic value for a surveyed trait
 - Fixed effects: temperature (b1) / range (b2) 
 - Random effects: population (B3) / tree (B4) 
-- covariate parameter: (c)x,ijkl the mean family seed weight as a covariate for maternal effect (c)
-- xmean global mean seed weight (substracted to  mean family seed weight in order to center the covariate)
+- covariate parameter: (c)<a href="https://www.codecogs.com/eqnedit.php?latex=x_{ijkl}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_{ijkl}" title="x_{ijkl}" /></a> the mean family seed weight as a covariate for maternal effect (c)
+- <a href="https://www.codecogs.com/eqnedit.php?latex=\bar{x}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bar{x}" title="\bar{x}" /></a> global mean seed weight (substracted to  mean family seed weight in order to center the covariate)
 
 #### QST estimation:
 
