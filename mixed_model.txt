@@ -1,16 +1,18 @@
 #-------------------------------------------------------------------------------------------------------------------------------------
 ##BETWEEN TEMPERATURES (CHAMBERS) MODEL 
-##Add comment symbol ì#î if you want to use the within chamber model in order to estimate QST
+##Add comment symbol ‚Äú#‚Äù if you want to use the within chamber model in order to estimate QST
 
 model{
 ##likelihood
 for(i in 1:NINDIV){ #NINDIV = Number of individuals
 mod[i]<- a0 + a1[Temp[i]] + a2[Range[i]] + A3[Pop[i]] + A4[Tree[i]] + A5[Temp[i],Pop[i]] + c*(Seedweight[i]- SeedweightMean)
 Trait[i]~dnorm(mod[i], 1/ySigma^2)
+# Trait[i]~dnorm(mod[i], TauErr) #expression 2 
 }
 
 #Priors
-ySigma~dunif(residSD/100, ySD*10) # see Kruschke 2015
+ySigma~dunif(residSD/100, ySD*10) # see Kruschke 2015 or use expression 2 with the following prior
+#TauErr~dgamma(0.0001, 0.0001)
 a0~dnorm(yMean, 1/(ySD*5)^2)
 c~dnorm(0,1/(2*ySD/xMetSD)^2 ) #covariate parameter
 
@@ -84,25 +86,26 @@ QST <- varP /(varP+ 8*varF)
 
 #-------------------------------------------------------------------------------------------------------------------------------------
 ##WITHIN TEMPERATURES (CHAMBERS) MODEL IN ORDER TO ESTIMATE QST
-##Remove comment symbols î# ì to use and comment the model above
+##Remove comment symbols ‚Äù# ‚Äú to use and comment the model above
 
 #model{
 
 # #likelihood
 # for(i in 1:NINDIV) #NINDIV = Number of individuals
 # {
-# mod[i]<- a0 + a2[Range[i]] +A3[Pop[i]] + A4[Tree[i]] + #c*(Seedweight[i]- SeedweightMean) # #Trait[i]~dnorm(mod[i], 1/ySigma^2)
+# mod[i]<- a0 + a2[Range[i]] +A3[Pop[i]] + A4[Tree[i]] + c*(Seedweight[i]- SeedweightMean) # 
+#Trait[i]~dnorm(mod[i], TauErr)
 # }
 
 ##Priors
-#ySigma~dunif(residSD/100, ySD*10)#residSD in place of ySD
+#TauErr~dgamma(0.0001, 0.0001)
 # a0~dnorm(yMean, 1/(ySD*5)^2)
-# c~dnorm( 0 , 1/(2*ySD/xMetSD)^2 ) #covariate parameter
+# c~dnorm( 0 , 1/(2*ySD/xMetSD)^2 ) #covariate parameter see Kruschke 2015 # xMetSD=sd(COVARIATE, na.rm = T)
 
 ## Fixed effect
 # for(o in 1:NRANGE) #NRANGE : Number of ranges
 # {
-# #a2[o]~dnorm(0.0, 0.000001)
+#a2[o]~dnorm(0.0, 0.000001)
 # }
 
 ## Random effects
@@ -111,14 +114,14 @@ QST <- varP /(varP+ 8*varF)
 #A3[p]~dnorm(0, tauP)
 #}
 ##Hyperpriors
-#tauP~dgamma(0.001,0.001)
+#tauP~dgamma(0.0001,0.0001)
 
 #for(d in 1:NTREE) #NTREE : number of trees
 #{
 #A4[d]~dnorm(0, tauF)
 #}
 ##Hyperpriors
-#tauF~dgamma(0.001,0.001)
+#tauF~dgamma(0.0001,0.0001)
 
 ##sum to zero constraint (see Kruschke 2015)
 #for(o in 1:NRANGE) { for(p in 1:NPOP) { for(d in 1:NTREE) {
