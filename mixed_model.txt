@@ -6,8 +6,8 @@ model{
 ##likelihood
 for(i in 1:NINDIV){ #NINDIV = Number of individuals
 mod[i]<- a0 + a1[Temp[i]] + a2[Range[i]] + A3[Pop[i]] + A4[Tree[i]] + A5[Temp[i],Pop[i]] + c*(Seedweight[i]- SeedweightMean)
-Trait[i]~dnorm(mod[i], 1/ySigma^2)
-# Trait[i]~dnorm(mod[i], TauErr) #expression 2 
+Trait[i]~dnorm(mod[i], 1/ySigma^2) # expression 1
+# Trait[i]~dnorm(mod[i], TauErr) #expression 2 alterantive to expression 1
 }
 
 #Priors
@@ -93,12 +93,15 @@ QST <- varP /(varP+ 8*varF)
 # #likelihood
 # for(i in 1:NINDIV) #NINDIV = Number of individuals
 # {
-# mod[i]<- a0 + a2[Range[i]] +A3[Pop[i]] + A4[Tree[i]] + c*(Seedweight[i]- SeedweightMean) # 
-#Trait[i]~dnorm(mod[i], TauErr)
+# mod[i]<- a0 + a2[Range[i]] +A3[Pop[i]] + A4[Tree[i]] + c*(Seedweight[i]- SeedweightMean) #
+#Trait[i]~dnorm(mod[i],  1/ySigma^2) #expression 1
+##Trait[i]~dnorm(mod[i], TauErr) #expression 2 alternative to expression 1
 # }
 
 ##Priors
-#TauErr~dgamma(0.0001, 0.0001)
+#ySigma~dunif(residSD/100, ySD*10) # see Kruschke 2015 or use expression 2 with the following prior
+##TauErr~dgamma(0.0001, 0.0001)
+
 # a0~dnorm(yMean, 1/(ySD*5)^2)
 # c~dnorm( 0 , 1/(2*ySD/xMetSD)^2 ) #covariate parameter see Kruschke 2015 # xMetSD=sd(COVARIATE, na.rm = T)
 
