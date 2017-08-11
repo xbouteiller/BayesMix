@@ -13,7 +13,7 @@ This repository contains:
 - Code of the model: **_mixed_model.txt_**
 - Code to execute the model in R (to be added)
 - Plotting functions of the results (to be added)
-- A sample data set (to be added soon)
+- A sample data set (to be added)
 
 #### Description of the original experimental design:
 
@@ -35,7 +35,7 @@ Finally, temperature x population interaction was implemented in the model.
 - Y: Individual phenotypic value for a surveyed trait
 - Fixed effects: temperature (b1) / range (b2) 
 - Random effects: population (B3) / tree (B4)
-- Interaction effect (B5) : temeprature x population
+- Interaction effect (B5): temperature x population
 - covariate parameter: (c) <a href="https://www.codecogs.com/eqnedit.php?latex=x_{ijkl}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_{ijkl}" title="x_{ijkl}" /></a> the mean family seed weight as a covariate for maternal effect (c)
 - <a href="https://www.codecogs.com/eqnedit.php?latex=\bar{x}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bar{x}" title="\bar{x}" /></a> global mean seed weight (substracted to  mean family seed weight in order to center the covariate)
 
