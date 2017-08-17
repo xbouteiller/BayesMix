@@ -7,7 +7,7 @@ model{
 for(i in 1:NINDIV){ #NINDIV = Number of individuals
 mod[i]<- a0 + a1[Temp[i]] + a2[Range[i]] + A3[Pop[i]] + A4[Tree[i]] + A5[Temp[i],Pop[i]] + c*(Seedweight[i]- SeedweightMean)
 Trait[i]~dnorm(mod[i], 1/ySigma^2) # expression 1
-# Trait[i]~dnorm(mod[i], TauErr) #expression 2 alterantive to expression 1
+# Trait[i]~dnorm(mod[i], TauErr) #expression 2 alternative to expression 1
 }
 
 #Priors
@@ -83,7 +83,7 @@ B5[t,d] <- a0 + a1[t] + mean(a2[1:NRANGE]) + A3[p] + mean(A4[1:NTREE]) + A5[t,p]
 ##Estimation of random effect variances
 
 QST <- varP /(varP+ 8*varF)
-
+}
 #-------------------------------------------------------------------------------------------------------------------------------------
 ##WITHIN TEMPERATURES (CHAMBERS) MODEL IN ORDER TO ESTIMATE QST
 ##Remove comment symbols ”# “ to use and comment the model above
