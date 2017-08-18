@@ -13,7 +13,7 @@ This repository contains:
 - Code of the model: **_mixed_model.txt_**
 - Code to execute the model in R (to be added)
 - Plotting functions of the results (to be added)
-- A sample data set (to be added)
+- A sample data set **_SampleDataset.txt_**
 
 #### Description of the original experimental design:
 
