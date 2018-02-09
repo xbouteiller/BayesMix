@@ -59,4 +59,7 @@ QST can be calculated among the three environments or within each environment de
 - R Core Team, 2015. R: A Language and Environment for Statistical Computing.
 
 #### Publication:
-A publication using this code is currently in preparation.
+
+If you are using this Bayesian Mixed Model, please cite:
+
+Bouteiller XP, Barraquand F, Garnier-Géré P, Harmand N, Laizet Y, Raimbault A, Segura R, Lassois L, Monty A, Verdu C, Mariette S & Porté AJ (2018) No evidence for genetic differentiation in juvenile traits between Belgian and French populations of the invasive tree Robinia pseudoacacia . Plant Ecology and Evolution.
