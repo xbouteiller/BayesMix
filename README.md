@@ -11,7 +11,7 @@ Here I provide a R/JAGS code for analysing quantitative genetics data using a mi
 
 This repository contains:
 - **mixed_model.txt**: code of the model: 
-  - This file contains the two version of the model (i.e. within and between chambers)
+  - This file contains the two versions of the model (i.e. within and between chambers)
 - **Script_R.r**: Code to execute the model in R 
   - use plyr for automatizing computation, parallelization is possible
 - **Fun_JAGS.r**: R functions for defining input data and initializing computation
