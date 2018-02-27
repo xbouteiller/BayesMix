@@ -1,18 +1,18 @@
 #-------------------------------------------------------------------------------------------------------------------------------------
 ##BETWEEN TEMPERATURES (CHAMBERS) MODEL 
-##Add comment symbol ‚Äú#‚Äù if you want to use the within chamber model in order to estimate QST
+##Add comment symbol ì#î if you want to use the within chamber model in order to estimate QST
 
 model{
 ##likelihood
 for(i in 1:NINDIV){ #NINDIV = Number of individuals
 mod[i]<- a0 + a1[Temp[i]] + a2[Range[i]] + A3[Pop[i]] + A4[Tree[i]] + A5[Temp[i],Pop[i]] + c*(Seedweight[i]- SeedweightMean)
-Trait[i]~dnorm(mod[i], 1/ySigma^2) # expression 1
-# Trait[i]~dnorm(mod[i], TauErr) #expression 2 alternative to expression 1
+#Trait[i]~dnorm(mod[i], 1/ySigma^2) # expression 1
+Trait[i]~dnorm(mod[i], TauErr) #expression 2 alternative to expression 1
 }
 
 #Priors
-ySigma~dunif(residSD/100, ySD*10) # see Kruschke 2015 or use expression 2 with the following prior
-#TauErr~dgamma(0.0001, 0.0001)
+#ySigma~dunif(residSD/100, ySD*10) # see Kruschke 2015 or use expression 2 with the following prior
+TauErr~dgamma(0.0001, 0.0001)
 a0~dnorm(yMean, 1/(ySD*5)^2)
 c~dnorm(0,1/(2*ySD/xMetSD)^2 ) #covariate parameter
 
@@ -71,14 +71,14 @@ for(d in 1:NTREE) {B4[d]<-mean(m[1:NTEMP,1:NRANGE,1:NPOP,d])-mean(m[1:NTEMP,1:NR
 for (t in 1:NTEMP) { 
 for (p in 1:NPOP ) {
 
-B5[t,d] <- a0 + a1[t] + mean(a2[1:NRANGE]) + A3[p] + mean(A4[1:NTREE]) + A5[t,p] - ( b0 + mean(b2[1:NRANGE]) + B3[p] + b1[t] + mean(B4[1:NTREE]))
+B5[t,p] <- a0 + a1[t] + mean(a2[1:NRANGE]) + A3[p] + mean(A4[1:NTREE]) + A5[t,p] - ( b0 + mean(b2[1:NRANGE]) + B3[p] + b1[t] + mean(B4[1:NTREE]))
 
 }
 }
 
 
 
-## QST estimation among the three chambers
+## QST estimation among the two chambers
 
 ##Estimation of random effect variances
 
@@ -86,7 +86,7 @@ QST <- varP /(varP+ 8*varF)
 }
 #-------------------------------------------------------------------------------------------------------------------------------------
 ##WITHIN TEMPERATURES (CHAMBERS) MODEL IN ORDER TO ESTIMATE QST
-##Remove comment symbols ‚Äù# ‚Äú to use and comment the model above
+##Remove comment symbols î# ì to use and comment the model above
 
 #model{
 
@@ -146,5 +146,4 @@ QST <- varP /(varP+ 8*varF)
 
 # QST <- varP /(varP+ 8*varF)
 
-}
-
+#}
