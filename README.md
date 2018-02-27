@@ -1,4 +1,4 @@
-## BayesMix: A R/JAGS Bayesian mixed model for analyzing quantitative genetics data 
+### BayesMix: A R/JAGS Bayesian mixed model for analyzing quantitative genetics data 
 
 
 #### Preamble:
