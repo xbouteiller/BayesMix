@@ -10,11 +10,12 @@ This code was successfully tested on my dataset. Please contact Xavier Bouteille
 Here I provide a R/JAGS code for analysing quantitative genetics data using a mixed model that allows to compute Qst quantitative trait differentiation index.
 
 This repository contains:
-* Code of the model: **_mixed_model.txt_**
-  1.sdf
-* Code to execute the model in R (to be added)
-* Plotting functions of the results (to be added)
-* A sample data set **_SampleDataset.txt_**
+- **mixed_model.txt**: code of the model: 
+  - This file contains the two version of the model (i.e. within and between chambers)
+- **Script_R.r**: Code to execute the model in R 
+  - use plyr for automatizing computation, parallelization is possible
+- **Fun_JAGS.r**: R functions for defining input data and initializing computation
+- **SampleDataset.txt**: a sample data set 
 
 #### Description of the original experimental design:
 
